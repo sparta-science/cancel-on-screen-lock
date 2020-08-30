@@ -2,13 +2,12 @@ name: 'Composite action'
 description: 'Run swift command'
 inputs:
   repo-token:
-    description: 'github token'
+    description: 'github token that can cancel the run'
     required: true
 runs:
-  using: "composite"
+  using: composite
   steps:
     - name: Check Runner
-      id: runner-check
       run: ${{ github.action_path }}/check-self-hosted-runner.swift
       shell: bash
     - run: ${{ github.action_path }}/cancel-this-run.sh

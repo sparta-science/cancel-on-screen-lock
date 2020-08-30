@@ -13,6 +13,7 @@ func checkIfScreenIsLocked() {
             print("::set-output name=screen-locked::false")
         }
     }
+    print("::set-output name=screen-locked::true")
 }
 
 checkIfScreenIsLocked()
