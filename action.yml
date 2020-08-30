@@ -14,5 +14,5 @@ runs:
     - run: ${{ github.action_path }}/cancel-this-run.sh
       shell: bash
       env:
-        SHOULD_CANCEL: ${{ steps.check-runner.outputs.screen-locked }}
+        SHOULD_CANCEL: ${{ steps.check-runner.outputs.screenLocked }}
         GITHUB_TOKEN: ${{ inputs.repo-token }}
