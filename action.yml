@@ -4,15 +4,9 @@ inputs:
   repo-token:
     description: 'github token'
     required: true
-outputs:
-  cancel:
-    description: 'Should cancel workflow'
-    value: ${{ steps.runner-check.outputs.cancel }}
 runs:
   using: "composite"
   steps:
-    - run: echo About to run swift in bash
-      shell: bash
     - name: Check Runner
       id: runner-check
       run: ${{ github.action_path }}/check-self-hosted-runner.swift
@@ -20,5 +14,5 @@ runs:
     - run: ${{ github.action_path }}/cancel-this-run.sh
       shell: bash
       env:
-        CANCEL: ${{ steps.runner-check.outputs.cancel }}
+        SHOULD_CANCEL: ${{ steps.runner-check.outputs.screen-locked }}
         GITHUB_TOKEN: ${{ inputs.repo-token }}
