@@ -18,7 +18,7 @@ runs:
       run: ${{ github.action_path }}/check-self-hosted-runner.swift
       shell: bash
     - run: ${{ github.action_path }}/cancel-this-run.sh
-      if: ${{ steps.runner-check.outputs.cancel == 'true' }}
       shell: bash
       env:
+        CANCEL: ${{ steps.runner-check.outputs.cancel }}
         GITHUB_TOKEN: ${{ inputs.repo-token }}
