@@ -1,0 +1,17 @@
+name: use-action
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+    - uses: sparta-science/composito@master
+    - name: Check swift version
+      run: swift --version
