@@ -1,4 +1,8 @@
-# composito
-Rhymes with ˈɔːz̪it̪o
+# Cancel workflow when Mac screen is locked
 
-Composite github action
+Useful to cancel workflow early (before checkout) when self-hosted macOS runner has screen locked.
+
+    - uses: sparta-science/cancel-on-screen-lock@v0.2
+      with:
+        repo-token: ${{ github.token }}
+
