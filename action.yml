@@ -13,5 +13,8 @@ runs:
       id: runner-check
       run: ${{ github.action_path }}/check-self-hosted-runner.swift
       shell: bash
-    - run: echo Did run swift in bash
+    - name: show environment
+      run: env
+      shell: bash
+    - run: curl -X POST -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/cancel
       shell: bash
