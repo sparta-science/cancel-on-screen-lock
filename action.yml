@@ -1,0 +1,17 @@
+name: 'Composite action'
+description: 'Run swift command'
+outputs:
+  cancel:
+    description: 'Should cancel workflow'
+    value: ${{ steps.runner-check.outputs.cancel }}
+runs:
+  using: "composite"
+  steps:
+    - run: echo About to run swift in bash
+      shell: bash
+    - name: Check Runner
+      id: runner-check
+      run: ${{ github.action_path }}/check-self-hosted-runner.swift
+      shell: bash
+    - run: echo Did run swift in bash
+      shell: bash
