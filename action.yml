@@ -1,5 +1,9 @@
 name: 'Composite action'
 description: 'Run swift command'
+inputs:
+  repo-token:
+    description: 'github token'
+    required: true
 outputs:
   cancel:
     description: 'Should cancel workflow'
@@ -18,3 +22,5 @@ runs:
       shell: bash
     - run: ${{ github.action_path }}/cancel-this-run.sh
       shell: bash
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
