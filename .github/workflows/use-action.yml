@@ -12,7 +12,8 @@ jobs:
     runs-on: macos-latest
 
     steps:
-    - uses: sparta-science/cancel-on-screen-lock@v0.2
+    - name: Cancel when Screen is Locked
+      uses: sparta-science/cancel-on-screen-lock@v0.2
       with:
         repo-token: ${{ github.token }}
     - name: Check swift version

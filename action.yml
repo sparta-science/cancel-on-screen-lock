@@ -1,5 +1,5 @@
-name: 'Check Screen Lock'
-description: 'Run swift command'
+name: 'Cancel on Screen Lock'
+description: 'Cancel workflow when macOS screen is locked'
 inputs:
   repo-token:
     description: 'github token that can cancel the run'
@@ -11,8 +11,12 @@ runs:
       id: check-runner
       run: ${{ github.action_path }}/check-self-hosted-runner.swift
       shell: bash
-    - run: ${{ github.action_path }}/cancel-this-run.sh
+    - name: Cancel the workflow
+      run: ${{ github.action_path }}/cancel-this-run.sh
       shell: bash
       env:
         SHOULD_CANCEL: ${{ steps.check-runner.outputs.screenLocked }}
         GITHUB_TOKEN: ${{ inputs.repo-token }}
+branding:
+  icon: monitor
+  color: red
